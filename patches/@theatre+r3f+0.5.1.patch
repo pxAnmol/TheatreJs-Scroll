@@ -1,0 +1,21 @@
+diff --git a/node_modules/@theatre/r3f/dist/extension/index.esm.js b/node_modules/@theatre/r3f/dist/extension/index.esm.js
+index 20416f2..599e4bd 100644
+--- a/node_modules/@theatre/r3f/dist/extension/index.esm.js
++++ b/node_modules/@theatre/r3f/dist/extension/index.esm.js
+@@ -21619,7 +21619,6 @@ import {
+   DoubleSide as DoubleSide2,
+   GLSL3,
+   Mesh as Mesh2,
+-  PlaneBufferGeometry,
+   ShaderMaterial
+ } from "three";
+ var InfiniteGridHelper = class extends Mesh2 {
+@@ -21631,7 +21630,7 @@ var InfiniteGridHelper = class extends Mesh2 {
+     subgridOpacity = 0.05,
+     gridOpacity = 0.15
+   } = {}) {
+-    const geometry = new PlaneBufferGeometry(2, 2, 1, 1);
++    const geometry = new PlaneGeometry(2, 2, 1, 1);
+     const material = new ShaderMaterial({
+       glslVersion: GLSL3,
+       side: DoubleSide2,
