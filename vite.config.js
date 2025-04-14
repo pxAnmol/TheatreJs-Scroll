@@ -6,5 +6,12 @@ export default defineConfig({
   build: {
     sourcemap: true,
     minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'theatre': ['@theatre/core', '@theatre/studio', '@theatre/r3f']
+        }
+      }
+    }
   },
 })
