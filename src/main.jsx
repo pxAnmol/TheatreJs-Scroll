@@ -16,6 +16,11 @@ const isMobile = () =>
     navigator.userAgent
   ) || window.innerWidth <= 768;
 
+const handleContextLost = (event) => {
+  event.preventDefault();
+  window.location.reload();
+};
+
 createRoot(document.getElementById("root")).render(
   isMobile() ? (
     <MobileBlocker />
@@ -23,7 +28,19 @@ createRoot(document.getElementById("root")).render(
     <>
       <LoadingScreen />
 
-      <Canvas camera={{ fov: 50 }} gl={{ powerPreference: "high-performance" }}>
+      <Canvas
+        camera={{ fov: 50 }}
+        gl={{
+          powerPreference: "high-performance",
+          alpha: false,
+          antialias: true,
+          failIfMajorPerformanceCaveat: true,
+          preserveDrawingBuffer: true,
+          stencil: false,
+          depth: true
+        }}
+        onContextLost={handleContextLost}
+      >
         <color attach="background" args={["#000000"]} />
         <Suspense fallback={null}>
           <App />

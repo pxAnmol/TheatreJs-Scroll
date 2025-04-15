@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
     minify: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -14,4 +15,5 @@ export default defineConfig({
       }
     }
   },
+  publicDir: 'public'
 })

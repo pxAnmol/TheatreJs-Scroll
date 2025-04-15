@@ -39,7 +39,7 @@ const CameraController = ({ targetRef }) => {
     if (targetRef.current) {
       targetRef.current.getWorldPosition(targetPosition);
       state.camera.lookAt(targetPosition);
-      state.camera.updateProjectionMatrix();
+      // state.camera.updateProjectionMatrix();
     }
   });
 
@@ -54,6 +54,10 @@ const AnimatedContent = () => {
   const prevScroll = useRef(0);
 
   useFrame((state) => {
+
+    // Limiting the frame rate to 30fps
+    if (state.clock.elapsedTime % (1/30) > (1/60)) return;
+
     const sequenceLength = val(sheet.sequence.pointer.length);
     const scrollDelta = scroll.offset - prevScroll.current;
 
