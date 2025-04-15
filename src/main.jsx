@@ -4,7 +4,6 @@ import App from "./App.jsx";
 import "./index.css";
 import { Canvas } from "@react-three/fiber";
 import LoadingScreen from "./LoadingScreen.jsx";
-import { Analytics } from "@vercel/analytics/react"
 
 const MobileBlocker = () => (
   <div className="mobile-blocker">
@@ -30,8 +29,6 @@ createRoot(document.getElementById("root")).render(
           <App />
         </Suspense>
       </Canvas>
-
-      <Analytics />
     </>
   )
 );
