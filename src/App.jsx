@@ -13,7 +13,7 @@ import { useFrame } from "@react-three/fiber";
 import { useScroll, ScrollControls } from "@react-three/drei";
 import * as THREE from "three";
 
-import projectState from "./assets/Project.theatre-project-state-final.json";
+import projectState from "./assets/Project.theatre-project-state_final.json";
 
 const isProd = import.meta.env.MODE === "production";
 
@@ -60,22 +60,17 @@ const AnimatedContent = () => {
     const scrollSpeed = scrollDelta < 0 ? 2 : 1;
     const targetPosition = scroll.offset * sequenceLength;
 
-    if (scroll.offset === 0) {
-      currentPos.current = 0;
-      sheet.sequence.position = 0;
-    } else {
-      const parallaxStrength = 0.02 * scrollSpeed;
-      state.camera.position.y += scrollDelta * parallaxStrength;
-      state.camera.rotation.z += scrollDelta * 0.01 * scrollSpeed;
+    const parallaxStrength = 0.02 * scrollSpeed;
+    state.camera.position.y += scrollDelta * parallaxStrength;
+    state.camera.rotation.z += scrollDelta * 0.01 * scrollSpeed;
 
-      currentPos.current = THREE.MathUtils.lerp(
-        currentPos.current,
-        targetPosition,
-        0.015 * scrollSpeed
-      );
+    currentPos.current = THREE.MathUtils.lerp(
+      currentPos.current,
+      targetPosition,
+      0.015 * scrollSpeed
+    );
 
-      sheet.sequence.position = currentPos.current;
-    }
+    sheet.sequence.position = currentPos.current;
 
     prevScroll.current = scroll.offset;
   });
@@ -104,7 +99,7 @@ const AnimatedContent = () => {
 
 const App = () => {
   return (
-    <ScrollControls pages={55}>
+    <ScrollControls pages={57}>
       <SheetProvider sheet={mainSheet}>
         <AnimatedContent />
       </SheetProvider>
